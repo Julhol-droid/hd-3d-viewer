@@ -1,0 +1,21 @@
+{
+  "name": "hd/hd-3d-viewer",
+  "type": "project",
+  "autoload": {
+    "files": [
+      "vendor/cmb2/cmb2/init.php"
+    ],
+    "psr-4": {
+      "Inc\\": "inc"
+    }
+  },
+  "authors": [
+    {
+      "name": "julhol-droid",
+      "email": "julian.holzmayer@gmail.com"
+    }
+  ],
+  "require": {
+    "cmb2/cmb2": "^2.10"
+  }
+}

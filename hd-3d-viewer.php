@@ -10,4 +10,16 @@
  * Domain Path: TODO
  * Version:     0.0.1
  */
+defined("ABSPATH") or die("Hey, what are you doing here!");
 
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Inc\PluginMain;
+
+if ( class_exists("PluginMain") ) {
+    $plugin = new PluginMain();
+    register_activation_hook( __FILE__, [$plugin, "activate"] );
+    register_deactivation_hook( __FILE__, [$plugin, "deactivate"]  );
+    register_uninstall_hook( __FILE__, [$plugin, "uninstall"] );
+}
