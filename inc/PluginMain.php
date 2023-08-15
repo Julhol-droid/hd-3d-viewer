@@ -4,34 +4,38 @@ use Inc\Activate;
 use Inc\Deactivate;
 use Inc\Uninstall;
 
+use Inc\Admin\AdminMain;
+use Inc\Frontend\FrontendMain;
+use Inc\Models\ModelsMain;
+
 class PluginMain {
     /**
      * Init Plugin
      */
     public function __construct() {
-        Inc\Admin\AdminMain::init();
-        Inc\Frontend\FrontendMain::init();
-        Inc\Models\ModelsMain::init();
+        AdminMain::init();
+        FrontendMain::init();
+        ModelsMain::init();
     }
 
     /**
      * Activate Plugin
      */
-    public function activate() {
+    public static  function activate() {
         Activate::activate();
     }
 
     /**
      * Deactivate Plugin
      */
-    public function deactivate() {
+    public static function deactivate() {
         Deactivate::deactivate();
     }
 
     /**
      * Uninstall Plugin
      */
-    public function uninstall() {
+    public static function uninstall() {
         Uninstall::uninstall();
     }
 
