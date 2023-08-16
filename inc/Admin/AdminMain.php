@@ -1,10 +1,13 @@
 <?php
 namespace Inc\Admin;
 use Inc\Admin\ObjectViewerColumns;
+use Inc\Admin\Scripts;
+use Inc\PluginMain;
 
 class AdminMain {
     public static function init() {
         ObjectViewerColumns::init();
+        Scripts::init();
         add_filter( 'upload_mimes', [self::class, 'allow_obj_upload'] );
     }
 

@@ -10,6 +10,11 @@ use Inc\Models\ModelsMain;
 
 class PluginMain {
     /**
+     * NOTE: If changed also change the plugin dir name
+     */
+    public static $name = "hd-3d-viewer";
+
+    /**
      * Init Plugin
      */
     public function __construct() {
@@ -39,4 +44,17 @@ class PluginMain {
         Uninstall::uninstall();
     }
 
+    /**
+     * Gets the base directory of this plugin including a leading slash
+     */
+    public static function get_plugin_dir() {
+        return WP_PLUGIN_DIR . "/" . self::$name . "/";
+    }
+
+    /**
+     * Gets the base url of this plugin including a leading slash
+     */
+    public static function get_plugin_url() {
+        return plugin_dir_url( __DIR__ ); 
+    }
 }

@@ -8,10 +8,21 @@ class Shortcode {
         add_action( "init", [self::class, "add_shortcode"] );
     }
 
+    /**
+     * Adds the Shortcode to WP
+     */
     public static function add_shortcode() {
         add_shortcode(self::$shortcode_name, function($atts) {
             $id = $atts["id"];
-            return "TODO for id $id";
+            return self::generate_html($id);
         });
+    }
+
+    /**
+     * Gneerates the HTML for the Shortcode
+     * @param id The Id of the post to be referenced
+     */
+    public static function generate_html(String $id) {
+        return "<div>TODO</div>";
     }
 }
