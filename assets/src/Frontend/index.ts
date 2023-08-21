@@ -1,5 +1,11 @@
-// Need to wrap inside IIFE when declaring variables with the same name
-(() => {
-  const message: string = "Hello from FR Pae";
-  console.log(message);
-})();
+import * as THREE from "three";
+import { getPluginInfo, getShortcodeAttr } from "../utils";
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+console.log(getShortcodeAttr(18));

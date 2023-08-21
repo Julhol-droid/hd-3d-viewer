@@ -14,9 +14,11 @@
   "license": "ISC",
   "dependencies": {
     "mini-css-extract-plugin": "^2.7.6",
+    "three": "^0.155.0",
     "webpack": "^5.88.2"
   },
   "devDependencies": {
+    "@types/three": "^0.155.0",
     "@webpack-cli/generators": "^3.0.7",
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",
