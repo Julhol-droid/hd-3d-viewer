@@ -1,7 +1,7 @@
 export interface IGeneralPluginInfo {
-  name: string;
+  name: string
 }
 
 export interface IShortcodeAttr {
-  id: string;
+  id: string
 }

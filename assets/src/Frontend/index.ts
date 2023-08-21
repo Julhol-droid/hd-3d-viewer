@@ -1,11 +1,10 @@
-import * as THREE from "three";
-import { getPluginInfo, getShortcodeAttr } from "../utils";
+import * as THREE from 'three'
+import { getShortcodeAttr } from '../utils'
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+/** TODO: add 3d scene */
 
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+const renderer = new THREE.WebGLRenderer()
+renderer.setSize(window.innerWidth, window.innerHeight)
+document.body.appendChild(renderer.domElement)
 
-console.log(getShortcodeAttr(18));
+console.log(getShortcodeAttr(18))

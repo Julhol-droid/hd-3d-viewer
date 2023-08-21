@@ -1,2 +1,2 @@
-const message: string = "Hello from Admin Pae";
-console.log(message);
+const message: string = 'Hello from Admin Page'
+console.log(message)

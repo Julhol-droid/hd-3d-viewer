@@ -6,6 +6,8 @@
     "target": "es5",
     "jsx": "preserve",
     "allowJs": true,
-    "moduleResolution": "Bundler"
-  }
+    "moduleResolution": "Bundler",
+    "strictNullChecks": true
+  },
+  "include": ["./assets/src/**/*.ts", "./.eslintrc.js"]
 }
