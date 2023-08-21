@@ -1,13 +1,26 @@
 <?php
+/**
+ * ObjectViewerCPT Class.
+ *
+ * @package hd-3d-viewer
+ */
+
 namespace Inc\Models;
 
-use Inc\Helpers\DomainHelper;
-
+/**
+ * ObjectViewerCPT
+ */
 class ObjectViewerCPT {
-	public static $slug       = 'hd-object-viewer';
+	/** @var string The Slug of the CPT */
+	public static $slug = 'hd-object-viewer';
+	/** @var string The metabox id of the CPT's metabox */
 	public static $metabox_id = 'hd-object-viewer-mb';
+	/** @var string The Slug of the file group inside the CPT's metabox */
 	public static $file_group = 'hd-object-viewer-mb-files-group';
 
+	/**
+	 * The init function
+	 */
 	public static function init() {
 		add_action( 'init', array( self::class, 'register_post_type' ) );
 		add_action( 'cmb2_admin_init', array( self::class, 'add_metaboxes' ) );
@@ -20,7 +33,7 @@ class ObjectViewerCPT {
 		register_post_type(
 			self::$slug,
 			array(
-				'label'               => __( '3D View', DomainHelper::$domain ),
+				'label'               => __( '3D View', 'hd-3d-viewer' ),
 				'description'         => 'Recipe custom post type.',
 				'public'              => true,
 				'exclude_from_search' => true,
@@ -37,7 +50,7 @@ class ObjectViewerCPT {
 		$cmb = new_cmb2_box(
 			array(
 				'id'           => self::$metabox_id,
-				'title'        => __( '3D View Options', DomainHelper::$domain ),
+				'title'        => __( '3D View Options', 'hd-3d-viewer' ),
 				'object_types' => array( self::$slug ),
 				'context'      => 'normal',
 				'priority'     => 'high',
@@ -50,20 +63,19 @@ class ObjectViewerCPT {
 				'id'      => self::$file_group,
 				'type'    => 'group',
 				'options' => array(
-					'group_title'    => __( '3D Object', DomainHelper::$domain ),
-					'add_button'     => __( 'Add 3D Object', DomainHelper::$domain ),
-					'remove_button'  => __( 'Remove 3D Object', DomainHelper::$domain ),
+					'group_title'    => __( '3D Object', 'hd-3d-viewer' ),
+					'add_button'     => __( 'Add 3D Object', 'hd-3d-viewer' ),
+					'remove_button'  => __( 'Remove 3D Object', 'hd-3d-viewer' ),
 					'sortable'       => true,
-					'remove_confirm' => __( 'Are you sure you want to remove?', DomainHelper::$domain ),
+					'remove_confirm' => __( 'Are you sure you want to remove?', 'hd-3d-viewer' ),
 				),
 			)
 		);
 
-		// Title for 3D Object
 		$cmb->add_group_field(
 			$group_field_id,
 			array(
-				'name' => __( 'Title', DomainHelper::$domain ),
+				'name' => __( 'Title', 'hd-3d-viewer' ),
 				'id'   => 'title',
 				'type' => 'text',
 			)
@@ -73,7 +85,7 @@ class ObjectViewerCPT {
 		$cmb->add_group_field(
 			$group_field_id,
 			array(
-				'name' => __( '3D File', DomainHelper::$domain ),
+				'name' => __( '3D File', 'hd-3d-viewer' ),
 				'id'   => 'file',
 				'type' => 'file',
 			)

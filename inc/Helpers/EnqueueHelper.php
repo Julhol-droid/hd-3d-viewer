@@ -1,23 +1,35 @@
 <?php
+/**
+ * EnqueueHelper Class
+ *
+ * @package hd-3d-viewer
+ */
 
 namespace Inc\Helpers;
 
 use Inc\PluginMain;
 
+/**
+ * EnqueueHelper Class
+ */
 class EnqueueHelper {
+	/** @var string The prefix for the enqueued asset */
 	public static string $prefix = 'hd-3d-viewer';
+	/** @var string The filename of the enqueued assets */
 	public string $filename;
+	/** @var array The dependencies of the asset */
 	public array $deps;
+	/** @var bool Wheter the Script should be inside the footer */
 	public bool $in_footer;
 
 	/**
 	 * NOTE: The file needs to be located inside assets/dist
 	 *
-	 * @param filename The name of the Script to be enqueued.
-	 * @param deps The dependecies array for the assets
-	 * @param in_footer If the asset should be included in the footer. This will only have an effect on JS files
+	 * @param string $filename The name of the Script to be enqueued.
+	 * @param array  $deps The dependecies array for the assets.
+	 * @param bool   $in_footer If the asset should be included in the footer. This will only have an effect on JS files.
 	 */
-	function __construct( string $filename, $deps = array(), bool $in_footer = false ) {
+	public function __construct( string $filename, $deps = array(), bool $in_footer = false ) {
 		$this->filename  = $filename;
 		$this->deps      = $deps;
 		$this->in_footer = $in_footer;
@@ -30,11 +42,11 @@ class EnqueueHelper {
 		$src    = self::get_src();
 		$handle = self::get_handle();
 		$ver    = self::get_version();
-		if ( $this->isScript() ) {
+		if ( $this->is_script() ) {
 			wp_enqueue_script( $handle, $src, $this->deps, $ver, $this->in_footer );
 			return;
 		}
-		if ( $his->isCSS() ) {
+		if ( $his->is_css() ) {
 			wp_enqueue_style( $handle, $src, $this->deps, $ver );
 			return;
 		}
@@ -42,8 +54,6 @@ class EnqueueHelper {
 
 	/**
 	 * Gets the handle for the enqued asset
-	 *
-	 * @param filename
 	 */
 	private function get_handle() {
 		$filename = str_replace( array( '.js, .css' ), '', $this->filename );
@@ -52,8 +62,6 @@ class EnqueueHelper {
 
 	/**
 	 * Gets the src of the enqued asset
-	 *
-	 * @param filename
 	 */
 	private function get_src() {
 		return PluginMain::get_plugin_url() . "assets/dist/$this->filename";
@@ -69,14 +77,14 @@ class EnqueueHelper {
 	/**
 	 * Determines if this asset is a JS file
 	 */
-	private function isScript() {
+	private function is_script() {
 		return strpos( $this->filename, '.js' );
 	}
 
 	/**
 	 * Determines if this asset is a CSS file
 	 */
-	private function isCSS() {
+	private function is_css() {
 		return strpos( $this->filename, '.css' );
 	}
 }

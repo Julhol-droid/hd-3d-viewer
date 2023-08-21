@@ -1,4 +1,10 @@
 <?php
+/**
+ * PluginMain Class
+ *
+ * @package hd-3d-viewer
+ */
+
 namespace Inc;
 
 use Inc\Activate;
@@ -9,8 +15,14 @@ use Inc\Admin\AdminMain;
 use Inc\Frontend\FrontendMain;
 use Inc\Models\ModelsMain;
 
+/**
+ * PluginMain class
+ *
+ * This class initializes the 3DViewerPlugin
+ */
 class PluginMain {
 	/**
+	 * @var string The name of the plugin.
 	 * NOTE: If changed also change the plugin dir name
 	 */
 	public static $name = 'hd-3d-viewer';
