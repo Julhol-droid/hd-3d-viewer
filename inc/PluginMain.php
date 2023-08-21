@@ -28,6 +28,12 @@ class PluginMain {
 	public static $name = 'hd-3d-viewer';
 
 	/**
+	 * @var string $js_name The plugin name in camelCase
+	 * The plugin name in JS Camel Case representation
+	 */
+	public static $js_name = 'hd3dViewer';
+
+	/**
 	 * Init Plugin
 	 */
 	public function __construct() {

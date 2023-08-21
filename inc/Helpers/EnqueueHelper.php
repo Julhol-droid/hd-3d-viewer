@@ -55,36 +55,36 @@ class EnqueueHelper {
 	/**
 	 * Gets the handle for the enqued asset
 	 */
-	private function get_handle() {
-		$filename = str_replace( array( '.js, .css' ), '', $this->filename );
+	public function get_handle() {
+		$filename = str_replace( [ '.js, .css' ], '', $this->filename );
 		return self::$prefix . '-' . $filename;
 	}
 
 	/**
 	 * Gets the src of the enqued asset
 	 */
-	private function get_src() {
+	public function get_src() {
 		return PluginMain::get_plugin_url() . "assets/dist/$this->filename";
 	}
 
 	/**
 	 * Gets the version of the assets based on the creation or last modified date of the asset
 	 */
-	private function get_version() {
+	public function get_version() {
 		return filemtime( PluginMain::get_plugin_dir() . 'assets/dist/' . $this->filename );
 	}
 
 	/**
 	 * Determines if this asset is a JS file
 	 */
-	private function is_script() {
+	public function is_script() {
 		return strpos( $this->filename, '.js' );
 	}
 
 	/**
 	 * Determines if this asset is a CSS file
 	 */
-	private function is_css() {
+	public function is_css() {
 		return strpos( $this->filename, '.css' );
 	}
 }
