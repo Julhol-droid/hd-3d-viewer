@@ -2,7 +2,8 @@
 namespace Inc;
 
 class Deactivate {
-    public static function deactivate() {
 
-    }
+	public static function deactivate() {
+
+	}
 }

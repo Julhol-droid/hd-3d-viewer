@@ -3,5 +3,5 @@
 namespace Inc\Helpers;
 
 class DomainHelper {
-    public static String $domain = "hd-3d-viewer";
+	public static string $domain = 'hd-3d-viewer';
 }
