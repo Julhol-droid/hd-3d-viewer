@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": " webpack --watch --mode development",
-    "build": " webpack --mode production"
+    "build": " webpack --mode production",
+    "lint:php": "composer exec phpcs",
+    "lint:php:fix": "composer exec phpcbf"
   },
   "author": "",
   "license": "ISC",
