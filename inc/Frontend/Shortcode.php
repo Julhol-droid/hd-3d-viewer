@@ -9,6 +9,7 @@ namespace Inc\Frontend;
 
 use Inc\Helpers\EnqueueHelper;
 use Inc\Frontend\Scripts;
+use Inc\PluginMain;
 
 /**
  * Shortcode Class
@@ -33,9 +34,6 @@ class Shortcode {
 			function( $atts ) {
 				$id                     = $atts['id'];
 				$frontend_script_handle = ( new EnqueueHelper( 'frontend.js' ) )->get_handle();
-				/** TODO: Localize scirpt for each shortcode, but wihtin the Scripts PHP Class */
-				/** $isSuccess = wp_add_inline_script( $frontend_script_handle, "const HEADING = \"Name is $id\"", "before"); */
-				/** If (!$isSuccess) return $frontend_script_handle; */
 				Scripts::enqueue_frontend_script_in_shortcode();
 				Scripts::localize_script_in_shortcode( $atts );
 				return self::generate_html( $id );
@@ -49,6 +47,8 @@ class Shortcode {
 	 * @param string $id The Id of the post to be referenced.
 	 */
 	public static function generate_html( string $id ) {
-		return "<div>TODO $id</div>";
+		$js_name     = PluginMain::$js_name;
+		$plugin_slug = PluginMain::$name;
+		return "<div class=\"${js_name}Shortcode$id ${js_name}\" data-$plugin_slug-id=$id>TODO $id</div>";
 	}
 }

@@ -10,7 +10,7 @@ namespace Inc\Frontend;
 use Inc\Helpers\EnqueueHelper;
 use Inc\Helpers\GeneralHelper;
 use Inc\PluginMain;
-
+use Inc\Models\DataClassViewerCPT;
 
 /**
  * Scripts Class
@@ -48,10 +48,11 @@ class Scripts {
 	 * @param array $attr The Shortcode Attributes to be used inside the script.
 	 */
 	public static function localize_script_in_shortcode( array $attr ) {
-		$handle = ( new EnqueueHelper( 'frontend.js' ) )->get_handle();
-		$slug   = PluginMain::$js_name;
-		$id     = $attr['id'];
-		$data   = "const ${slug}Shortcode${id} = " . wp_json_encode( $attr ) . ';';
+		$handle          = ( new EnqueueHelper( 'frontend.js' ) )->get_handle();
+		$slug            = PluginMain::$js_name;
+		$id              = $attr['id'];
+		$viewer_cpt_data = new DataClassViewerCPT( $id );
+		$data            = "window.${slug}Shortcode${id} = " . wp_json_encode( $viewer_cpt_data->generate_data_array() ) . ';';
 
 		wp_add_inline_script( $handle, $data, 'before' );
 	}
@@ -62,7 +63,8 @@ class Scripts {
 	public static function add_general_plugin_variables() {
 		$handle              = ( new EnqueueHelper( 'frontend.js' ) )->get_handle();
 		$general_plugin_info = [
-			'name' => PluginMain::$js_name,
+			'name'          => PluginMain::$js_name,
+			'nameSnakeCase' => PluginMain::$name,
 		];
 
 		$data = 'const HdViewerPluginInfo = ' . wp_json_encode( $general_plugin_info ) . ';';

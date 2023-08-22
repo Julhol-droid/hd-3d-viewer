@@ -22,8 +22,9 @@ use Inc\Models\ModelsMain;
  */
 class PluginMain {
 	/**
-	 * @var string The name of the plugin.
 	 * NOTE: If changed also change the plugin dir name
+	 *
+	 * @var string The name of the plugin.
 	 */
 	public static $name = 'hd-3d-viewer';
 
